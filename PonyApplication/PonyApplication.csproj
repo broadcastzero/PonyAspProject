@@ -190,8 +190,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -325,9 +323,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PonyApplication.DAL\PonyApplication.DAL.csproj">
-      <Project>{3F5BBE7B-3F8B-49BA-BC17-4EB8C0F52E4A}</Project>
-      <Name>PonyApplication.DAL</Name>
+    <ProjectReference Include="..\PonyApplication.BL\PonyApplication.BL.csproj">
+      <Project>{4c25d082-6ae0-4b30-9e0c-ce60048f3822}</Project>
+      <Name>PonyApplication.BL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

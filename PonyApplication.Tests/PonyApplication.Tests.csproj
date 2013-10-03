@@ -130,9 +130,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PonyApplication\PonyApplication.csproj">
-      <Project>{7F341DAB-95AB-4385-9E2D-4760E19263FB}</Project>
-      <Name>PonyApplication</Name>
+    <ProjectReference Include="..\PonyApplication.BL\PonyApplication.BL.csproj">
+      <Project>{4C25D082-6AE0-4B30-9E0C-CE60048F3822}</Project>
+      <Name>PonyApplication.BL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

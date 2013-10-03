@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using PonyApplication.DAL.Data;
-using PonyApplication.DAL.Models;
 using PonyApplication.Filters;
 using WebMatrix.WebData;
+using IsolationLevel = System.Data.IsolationLevel;
 
-namespace PonyApplication.Controllers
+namespace PonyApplication.BL.Controllers
 {
     [Authorize]
     [InitializeSimpleMembership]
@@ -42,6 +43,7 @@ namespace PonyApplication.Controllers
 
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
+
             return View(model);
         }
 
@@ -107,7 +109,7 @@ namespace PonyApplication.Controllers
             if (ownerAccount == User.Identity.Name)
             {
                 // Use a transaction to prevent the user from deleting their last login credential
-                using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.Serializable }))
+                using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = (System.Transactions.IsolationLevel) IsolationLevel.Serializable }))
                 {
                     bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
                     if (hasLocalAccount || OAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name).Count > 1)
